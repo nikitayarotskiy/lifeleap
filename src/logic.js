@@ -1,19 +1,26 @@
 export function generateData(population) {
-    const baseBirthRate = 0.000015;
-    const baseDeathRate = 0.000008;
     const totalPopulation = Math.max(population, 0);
-    const birthRate = (baseBirthRate * totalPopulation) / 10;
-    const deathRate = (baseDeathRate * totalPopulation) / 10;
-    const medianAge = Math.floor(18 + (totalPopulation / 100000) * 2);
-    const lifeExpectancy = Math.floor(70 + (totalPopulation / 100000) * 1);
-    const youthDependencyRatio = Math.max(0, 40 - (totalPopulation / 100000));
-    const oldAgeDependencyRatio = Math.min(100, 20 + (totalPopulation / 100000));
-    const populationGrowthRate = ((birthRate - deathRate) / totalPopulation) * 100;
-    const netMigrationRate = 0.5;
-    const sexRatio = Math.floor(98 + (Math.random() > 0.5 ? 1 : -1));
-    const year = 1
+    
+    const baseBirthRate = Math.random() * (0.045 - 0.010) + 0.010; 
+    const baseDeathRate = Math.random() * (0.025 - 0.005) + 0.005; 
+    
+    const birthRate = baseBirthRate;
+    const deathRate = baseDeathRate;
 
-    console.log(population)
+    const medianAge = Math.min(Math.floor(20 + (totalPopulation / 500000) * 10 + Math.random() * 5), 100);
+    const lifeExpectancy = Math.min(Math.floor(70 + (totalPopulation / 100000) * 5 + Math.random() * 5), 120); 
+
+    // Initialize ratios with more reasonable minimum values
+    const youthDependencyRatio = Math.max(10, Math.min(100, Math.floor(30 - (totalPopulation / 10000000) * 20 + Math.random() * 10)));
+    const oldAgeDependencyRatio = Math.max(0, Math.min(100, Math.floor(20 + (totalPopulation / 10000000) * 20 + Math.random() * 10)));
+
+    const populationGrowthRate = ((birthRate - deathRate) * 100) || 0; 
+    const netMigrationRate = Math.random() * (0.02 - 0.01) + 0.01; 
+    
+    const sexRatio = Math.floor(95 + Math.random() * 11); 
+
+    const year = 1;
+
     return {
         year,
         totalPopulation,
@@ -33,27 +40,42 @@ export function addYears(oldData, numberOfYearsAdded) {
     const newData = { ...oldData };
 
     for (let time = 0; time < numberOfYearsAdded; time++) {
-        const year = newData.year++
-        const births = (newData.birthRate / 100) * newData.totalPopulation;
-        const deaths = (newData.deathRate / 100) * newData.totalPopulation;
-        const netMigration = (newData.netMigrationRate / 100) * newData.totalPopulation;
+        newData.year++;
 
+        const growthRate = (Math.random() * 0.02 - 0.01) / 100; // Adjust growth rate to a smaller range
+        const births = newData.birthRate * newData.totalPopulation * growthRate;
+        const deaths = newData.deathRate * newData.totalPopulation * growthRate;
+        const netMigration = newData.netMigrationRate * newData.totalPopulation * growthRate;
+        
         newData.totalPopulation += births - deaths + netMigration;
         newData.totalPopulation = Math.max(newData.totalPopulation, 0);
-        newData.medianAge += 1;
-
+        
+        newData.medianAge = Math.min(newData.medianAge + Math.random() * 0.2, 120);
         if (newData.lifeExpectancy > newData.medianAge) {
-            newData.lifeExpectancy += 0.1;
+            newData.lifeExpectancy = Math.min(newData.lifeExpectancy + Math.random() * 0.2, 120);
         }
 
-        newData.youthDependencyRatio = Math.max(0, newData.youthDependencyRatio - 0.1);
-        newData.oldAgeDependencyRatio = Math.min(100, newData.oldAgeDependencyRatio + 0.1);
-        newData.sexRatio = Math.max(0, newData.sexRatio + (Math.random() > 0.5 ? 0.1 : -0.1));
-        newData.populationGrowthRate = ((births - deaths + netMigration) / newData.totalPopulation) * 100;
+        newData.youthDependencyRatio = Math.max(0, Math.min(100, newData.youthDependencyRatio + (Math.random() * 0.5 - 0.25))); 
+        newData.oldAgeDependencyRatio = Math.max(0, Math.min(100, newData.oldAgeDependencyRatio + (Math.random() * 0.5 - 0.25))); 
+
+        if (newData.totalPopulation < 100000) {
+            newData.youthDependencyRatio = Math.min(100, newData.youthDependencyRatio + 2); 
+            newData.oldAgeDependencyRatio = Math.max(0, newData.oldAgeDependencyRatio - 2); 
+        } else if (newData.totalPopulation > 1000000) {
+            newData.youthDependencyRatio = Math.max(10, newData.youthDependencyRatio - 2); 
+            newData.oldAgeDependencyRatio = Math.min(100, newData.oldAgeDependencyRatio + 2); 
+        }
+
+        newData.sexRatio = Math.max(0, Math.floor(newData.sexRatio + (Math.random() > 0.5 ? 0.05 : -0.05)));
+
+        newData.populationGrowthRate = ((births - deaths + netMigration) / newData.totalPopulation) * 100 || 0; 
     }
 
     return newData;
 }
+
+
+
 
 
 const boyNames = [
