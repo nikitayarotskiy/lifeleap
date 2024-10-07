@@ -1,4 +1,4 @@
-![Logo](public/logo.png)
+![Logo](public/gitLogo.png)
 
 # LifeLeap
 
@@ -14,7 +14,7 @@ Before running the application, make sure you have the following installed:
 1. **Download the Code**
    - You can either download the code as a ZIP file or clone the repository:
      ```sh
-        git clone https://github.com/nikitayarotskiy/lifeleap.git
+    git clone https://github.com/nikitayarotskiy/lifeleap.git
      ```
 
 2. **Navigate to the Project Directory**
