@@ -4,26 +4,37 @@
 
 LifeLeap is a dynamic platform designed for simulating population growth, demographic changes, and personalized life paths. It empowers users to explore how societies evolve over time through advanced statistical modeling and individual data generation.
 
-## Installation and Running the Project
 
-To get started with LifeLeap, follow these steps:
+## Prerequisites
+Before running the application, make sure you have the following installed:
+- [Node.js](https://nodejs.org/) (v14 or higher)
+- [npm](https://www.npmjs.com/get-npm) (comes with Node.js)
 
-### Prerequisites
+## How to Run
+1. **Download the Code**
+   - You can either download the code as a ZIP file or clone the repository:
+     ```sh
+        git clone https://github.com/nikitayarotskiy/lifeleap.git
+     ```
 
-Make sure you have the following installed on your machine:
+2. **Navigate to the Project Directory**
+   - Open your terminal or command prompt and navigate to the project directory:
+     ```sh
+     cd lifeleap
+     ```
 
-- **Node.js** (v14 or higher) - [Download here](https://nodejs.org/)
-- **npm** (Node Package Manager) - Usually installed with Node.js
+3. **Install Dependencies**
+   - Run the following command to install the necessary dependencies:
+     ```sh
+     npm install
+     ```
 
-### Clone the Repository
-
-1. Open your terminal or command prompt.
-2. Clone the repository using the following command:
-
-   ```bash
-   git clone https://github.com/nikitayarotskiy/lifeleap.git
-
-
+4. **Start the Application**
+   - Once the dependencies are installed, start the application with:
+     ```sh
+     npm start
+     ```
+   - This will launch the application in your default web browser. The default URL is usually `http://localhost:3000`.
 ## The Algorithm
 
 The algorithm simulates population growth and demographic changes over time by generating an initial dataset of population statistics, including birth and death rates, life expectancy, and dependency ratios based on a specified population size. This dataset is updated annually, adjusting population size through births, deaths, and migration while accounting for changes in median age, life expectancy, and other demographic factors. Additionally, it creates a list of individuals with randomly assigned names, ages, genders, and image paths. This list is updated over time by aging individuals and replacing those who surpass a certain age threshold with newly generated people.
