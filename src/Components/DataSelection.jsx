@@ -12,6 +12,41 @@ export default function DataSelection() {
 
     const backend = new Backend();
 
+    const countries = [
+        "Canada",
+        "United States",
+        "United Kingdom",
+        "Australia",
+        "Germany",
+        "France",
+        "Japan",
+        "India",
+        "Italy",
+        "Spain",
+        "Brazil",
+        "Mexico",
+        "Russia",
+        "China",
+        "South Korea",
+        "Netherlands",
+        "Sweden",
+        "Norway",
+        "New Zealand",
+        "Singapore",
+        "Switzerland",
+        "South Africa",
+        "Turkey",
+        "Thailand",
+        "Argentina",
+        "Poland",
+        "Portugal",
+        "Greece",
+        "Israel",
+        "Ireland",
+        "Malaysia",
+        "Philippines"
+    ];
+
     useEffect(() => {
         // Show the message by default when the component mounts
         setIsValidCountry(false);
@@ -64,11 +99,9 @@ export default function DataSelection() {
                     onChange={handleInputChange}
                 />
                 <datalist id="countries">
-                    <option value="USA"></option>
-                    <option value="Canada"></option>
-                    <option value="UK"></option>
-                    <option value="Germany"></option>
-                    <option value="Australia"></option>
+                    {countries.map((country, index) => (
+                        <option key={index} value={country} />
+                    ))}
                 </datalist>
             </div>
 

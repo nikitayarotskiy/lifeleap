@@ -4,6 +4,12 @@ export default function StatisticsDisplay({ statistics }) {
   return (
     <div className="w-full flex flex-col bg-white rounded rounded-t-2xl shadow-xl">
 
+      <div className="tooltip absolute top-0 right-2 m-4 tooltip-left " data-tip="Statistics may be inaccurate ">
+        <h2 className="material-symbols-outlined">
+          info
+        </h2>
+      </div>
+
       <div className="w-full p-6 rounded-t bg-black text-white flex flex-col items-center">
         <h1 className="text-4xl font-bold">LifeLeap</h1>
         <h2 className="text-xl mt-2">YEAR: {statistics.year}</h2>
