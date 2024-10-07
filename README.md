@@ -1,6 +1,28 @@
+![Logo](public/logo.png)
+
 # LifeLeap
 
 LifeLeap is a dynamic platform designed for simulating population growth, demographic changes, and personalized life paths. It empowers users to explore how societies evolve over time through advanced statistical modeling and individual data generation.
+
+## Installation and Running the Project
+
+To get started with LifeLeap, follow these steps:
+
+### Prerequisites
+
+Make sure you have the following installed on your machine:
+
+- **Node.js** (v14 or higher) - [Download here](https://nodejs.org/)
+- **npm** (Node Package Manager) - Usually installed with Node.js
+
+### Clone the Repository
+
+1. Open your terminal or command prompt.
+2. Clone the repository using the following command:
+
+   ```bash
+   git clone https://github.com/nikitayarotskiy/lifeleap.git
+
 
 ## The Algorithm
 
@@ -21,4 +43,3 @@ Furthermore, LifeLeap could evolve into a platform offering personalized life si
 LifeLeap was developed during a hackathon by Nikita Yarotskiy and Kiarad Z. We collaborated to create this innovative platform, leveraging our skills in programming and demographic analysis.
 
 
-![Alt Text](URL_TO_YOUR_IMAGE)
